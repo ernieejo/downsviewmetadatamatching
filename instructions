@@ -1,0 +1,75 @@
+Start with clean data files for WL and UTL
+all oclc and isbn numbers must be on individual rows with extraneous data removed
+clear leading, trailing and excessive spaces from ISBN and OCLC columns
+clear formats from ISBN and OCLC columns
+
+#Prepare a spreadsheet with the following information
+
+Filename/filepath: U:\\...2-Metadata Matching in Progress\\...WL-UTLdata.xlsx
+
+Sheetname - WL-ISBN (Clean WL data)
+Headings: CALLNUM-WL, BIBNUM, BARCODE, ITEMNUM, TITLE-WL, OCLC-WL, ISBN
+Sheetname - WL-OCLC (clean WL data)
+Headings: CALLNUM-WL, BIBNUM, BARCODE, ITEMNUM, TITLE-WL, OCLC, ISBN-WL
+Sheetname - UTL-ISBN (clean UTL data)
+Headings: UTLLIB, CATKEY, CALLNUM-UTL, CALLNUM2-UTL, TITLE-UTL, OCLC-WL, ISBN
+remove any rows that do not contain ISBNs
+Sheetname - UTL-OCLC (clean UTL data)
+Headings: UTLLIB, CATKEY, CALLNUM-UTL, CALLNUM2-UTL, TITLE-UTL, OCLC, ISBN-WL
+remove any rows that do not contain OCLC numbers
+
+#Instructions
+
+If not already installed, install pandas, xlrd, and xlsxwriter
+Download DVmatch.py
+Open IDLE. file > open > DVmatch1.py
+Within the script, change file paths to locate your file. Save
+Example: ‘U:\\filepath\\WL-UTL data.xlsx’
+On this file: run > run module
+Open WL-UTL data.xlsx and prepare the spreadsheet as follows:
+
+Sheetname - OCLC
+This sheet contains all matches based on OCLC numbers
+Sheetname -  ISBN
+This sheet contains all matches based on ISBN numbers
+Sheetname - COMBINED
+This sheet contains all matches on OCLC and ISBN data combined
+Remove all duplicates 
+BIBNUM, BARCODE, ITEMNUM, TITLE-WL, UTLLIB, CATKEY, and TITLE-WL must match
+Conditional formatting to highlight duplicates in the ITEMNUM column, then custom sort ITEMNUM by colour on top & ITEMNUM by A-Z
+Manually remove remaining duplicates, favouring downsview locations 
+Doublecheck that TITLE-WL and TITLE-UTL match. If not, remove row
+
+Sheetname - UNMATCHED
+This sheet contains all items from the original WL CLEAN file. 
+Matched items need to be removed manually: 
+Filter the results to delete all rows with CATKEY information
+Move item numbers to individual rows 
+
+#Quality Check
+
+Ensure ITEMNUM from COMBINED and UNMATCHED align with original pull list.
+Remove any ITEMNUM not in original pull list
+Compare ITEM NUM
+Volumning from item records can be added to this data (Export from Sierra)
+
+#Create file to use as pull list, sorted into streams
+
+Filename: [original file name](K@D by stream).xlsx
+
+Sheetname: DISCARD STREAM
+Copy WL-UTL Matches,UNMATCHED sheet to STREAM 2 - NO UTL 
+
+Sheetname: STREAM 1 - UTL RECORD
+Filter WL-UTL Matches, COMBINED sheet on UTLLIB  ‘contains Downsview’
+Copy to DISCARD STREAM
+
+Sheetname: STREAM 2 - NO UTL
+Filter WL-UTL Matches, COMBINED sheet on UTLLIB  ‘does not contain Downsview’ 
+Copy to STREAM 1 - UTL RECORD
+
+Create a copy [original file name](K@D by stream)callnumsort.xlsx
+Sort copy by call number
+Add a numbered index column for the call number sort order and a notes column
+save to U:\\Weldon Renovation Collections Working Group...\\3 - Downsview Pull List
+Notify JB that the file is ready
