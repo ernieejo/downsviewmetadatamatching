@@ -7,6 +7,8 @@ Python scripts to semi-automate the metadata matching process for the [Keep@Down
 * You will need to change the filepaths with the script to point to your documents
 * matchpoint is OCLC and ISBN numbers
 
+## New to Python?
+
 You can download Python from [Python.org](https://www.python.org/downloads/)
 
 Lauren Magnuson provides some great instructions in a ALCTS slideshow, [Introduction to Python and
