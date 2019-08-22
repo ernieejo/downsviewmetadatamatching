@@ -17,7 +17,9 @@ PyMARC](http://downloads.alcts.ala.org/ce/20171018_Intro_to_Python_PyMARC_Sessio
 These guides help with installing Python on [Windows](https://docs.python-guide.org/starting/install3/win/#install3-windows) and on [Mac OS X](https://docs.python-guide.org/starting/install3/osx/#install3-osx)
 
 Modules for Python are installed using 'pip' in Command Prompt. 
+
+This [tutorial on installing packages/modules](https://packaging.python.org/tutorials/installing-packages/#requirements-for-installing-packages) may be useful.
   
 * pip install pandas  
 * pip install xlrd 
-* pip install xlsx writer
+* pip install xlsxwriter
